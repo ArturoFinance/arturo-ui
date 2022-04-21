@@ -1,9 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { ethers } from 'ethers'
+import Web3Modal from "web3modal";
 
 const ConnectWalletButton = () => {
+  const [connected, setConnected] = useState(false)
+  const [account, setAccount] = useState(null)
+
+  const providerOptions = {};
+  const web3Modal = new Web3Modal({
+    network: "testnet", // optional
+    cacheProvider: true, // optional
+    providerOptions // required
+  });
+
   useEffect(() => {
     checkWalletIsConnected()
-  },[])
+  }, [])
 
   const checkWalletIsConnected = async () => {
     const { ethereum } = window
@@ -11,32 +23,48 @@ const ConnectWalletButton = () => {
     if (ethereum) {
       const accounts = await ethereum.request({ method: 'eth_accounts'})
       if (accounts.length !== 0) {
-        console.log(accounts[0])
+        setConnected(true)
+        setAccount(accounts[0])
       } else {
-        console.log("No authorized account found!")
+        setConnected(false)
+        setAccount(null)
       }
     }
   }
 
-  const connectWalletHandler = async () => {
+  const handleConnect = async () => {
+    const instance = await web3Modal.connect();
+
+    const provider = new ethers.providers.Web3Provider(instance);
+    const signer = provider.getSigner();
+    const account = await signer.getAddress()
     const { ethereum } = window
     
+    setConnected(true)
+    setAccount(account)
     if (!ethereum) {
       alert("Please install Metamask!")
     }
+  }
 
-    try {
-      const accounts = await ethereum.request({ method: 'eth_requestAccounts'})
-      console.log(accounts[0])
-    } catch(err) {
-      console.log(err)
-    }
+  const handleDisconnect = async () => {
+    await web3Modal.clearCachedProvider();
+    setConnected(false)
+    setAccount(null)
   }
 
   return (
-    <button onClick={connectWalletHandler} className='cta-button connect-wallet-button'>
-      Connect Wallet
-    </button>
+    (connected ?
+      <>
+        <button onClick={handleDisconnect} className='cta-button connect-wallet-button'>
+          Disconnect Wallet
+        </button> 
+        <p> Wallet address: {account} </p>
+      </> :
+      <button onClick={handleConnect} className='cta-button connect-wallet-button'>
+        Connect Wallet
+      </button>
+    )
   )
 }
 
