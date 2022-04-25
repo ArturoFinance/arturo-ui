@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { IntlProvider } from 'react-intl'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import intlConfig from './config/intl'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <IntlProvider {...intlConfig}>
+      <App />
+    </IntlProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
