@@ -6,11 +6,11 @@ import {
   Box
 } from '@mui/material';
 import { ethers } from 'ethers'
+import { NETWORK_OPTIONS } from '../../config/constants';
 import Web3Modal from "web3modal";
 
 import ButtonGroup from "../HeaderButtonGroup"
-import NetworkSelectButton from '../NetworkSelectButton'
-import AddressSelectButton from '../AddressSelectButton';
+import SelectButton from '../SelectButton';
 import { WALLET_OPTIONS } from '../../config/constants';
 import useStyles from './styles'
 
@@ -89,10 +89,12 @@ const Header = () => {
                 title = 'Connect Wallet'
               /> : 
               <div className={classes.buttonGroup}>
-                <AddressSelectButton
+                <SelectButton
                   options={addressOptions}
                 />
-                <NetworkSelectButton/>
+                <SelectButton
+                  options={NETWORK_OPTIONS}
+                />
               </div>
           }
         </Toolbar>

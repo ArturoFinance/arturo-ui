@@ -21,7 +21,8 @@ export default makeStyles(theme => ({
     color: '#FFFFFF'
   },
   toolbar: {
-    height: '160px'
+    height: '160px',
+    backgroundColor: '#1C1C1C'
   },
   buttonGroup: {
     position: 'absolute',

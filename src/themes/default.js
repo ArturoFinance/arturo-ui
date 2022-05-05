@@ -1,7 +1,7 @@
 import tinycolor from 'tinycolor2'
 
 const primary = '#E73CA2'
-const secondary = '#FF5C93'
+const secondary = '#565656'
 const warning = '#FFC260'
 const success = '#3CD4A0'
 const info = '#9013FE'
@@ -66,71 +66,6 @@ const defaultTheme =  {
     background: {
       default: '#1C1C1C',
       paper: '#1C1C1C'
-    }
-  },
-  customShadows: {
-    widget: '0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
-    widgetDark: '0px 3px 18px 0px #4558A3B3, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A',
-    widgetWide: '0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A'
-  },
-  overrides: {
-    MuiBackdrop: {
-      root: {
-        backgroundColor: '#1C1C1C'
-      }
-    },
-    MuiMenu: {
-      paper: {
-        boxShadow: '0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A'
-      }
-    },
-    MuiSelect: {
-      icon: {
-        color: '#B9B9B9'
-      }
-    },
-    MuiListItem: {
-      root: {
-        '&$selected': {
-          backgroundColor: '#F3F5FF !important',
-          '&:focus': {
-            backgroundColor: '#F3F5FF'
-          }
-        }
-      },
-      button: {
-        '&:hover, &:focus': {
-          backgroundColor: '#F3F5FF'
-        }
-      }
-    },
-    MuiTouchRipple: {
-      child: {
-        backgroundColor: 'white'
-      }
-    },
-    MuiTableRow: {
-      root: {
-        height: 56
-      }
-    },
-    MuiTableCell: {
-      root: {
-        borderBottom: '1px solid rgba(224, 224, 224, .5)',
-        paddingLeft: 24
-      },
-      head: {
-        fontSize: '0.95rem'
-      },
-      body: {
-        fontSize: '0.95rem',
-        backgroundColor: '#1C1C1C'
-      }
-    },
-    PrivateSwitchBase: {
-      root: {
-        marginLeft: 10
-      }
     }
   }
 }

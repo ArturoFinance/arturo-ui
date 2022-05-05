@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import {
   ButtonGroup,
   Button,
@@ -12,7 +12,7 @@ import {
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import useStyles from './styles'
 
-const AddressSelectButton = ({options}) => {
+const SelectButton = ({options}) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -31,20 +31,13 @@ const AddressSelectButton = ({options}) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
-  const title = useMemo(
-    () =>
-      options[selectedIndex]
-    , [selectedIndex, options]
-  )
-
   return(
     <>
-      <ButtonGroup variant="outlined" ref={anchorRef}>
-        <Button>{title}</Button>
+      <ButtonGroup variant="contained" color='secondary' ref={anchorRef}>
+        <Button>{options[selectedIndex]}</Button>
         <Button
           size="small"
           aria-controls={open ? 'button-menu' : undefined}
@@ -94,4 +87,4 @@ const AddressSelectButton = ({options}) => {
 
 }
 
-export default AddressSelectButton
+export default SelectButton
