@@ -5,12 +5,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import intlConfig from './config/intl'
+import { ThemeProvider } from '@mui/material/styles';
+import Themes from './themes'
 
 ReactDOM.render(
   <React.StrictMode>
-    <IntlProvider {...intlConfig}>
-      <App />
-    </IntlProvider>
+    <ThemeProvider theme={Themes.default}>
+      <IntlProvider {...intlConfig}>
+        <App />
+      </IntlProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

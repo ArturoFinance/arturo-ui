@@ -15,8 +15,8 @@ const TokenPriceTable = () => {
   const addrETH = "0x0715A7794a1dc8e42615F059dD6e406A6594651A"
   const addrBTC = "0x007A22900a3B98143368Bd5906f8E17e9867581b"
 
-  const [ethPrice, setEthePrice] = useState(0) 
-  const [btcPrice, setBtcPrice] = useState(0) 
+  const [ethPrice, setEthePrice] = useState(0)
+  const [btcPrice, setBtcPrice] = useState(0)
 
   useEffect(
     () => {
@@ -25,14 +25,14 @@ const TokenPriceTable = () => {
       let timer = setInterval(
         () => {
           ethPriceFeed.latestRoundData()
-          .then((roundData) => {
-            setEthePrice(roundData.answer.toNumber()/ Math.pow(10, 8))
-          })
+            .then((roundData) => {
+              setEthePrice(roundData.answer.toNumber() / Math.pow(10, 8))
+            })
 
           btcPriceFeed.latestRoundData()
-          .then((roundData) => {
-            setBtcPrice(roundData.answer.toNumber()/ Math.pow(10, 8))
-          }) 
+            .then((roundData) => {
+              setBtcPrice(roundData.answer.toNumber() / Math.pow(10, 8))
+            })
         },
         10000
       )
