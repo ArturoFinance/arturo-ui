@@ -1,0 +1,53 @@
+.connectWallet__btn__connect {
+  cursor: pointer;
+  width: 160px;
+  height: 39px;
+  background: transparent linear-gradient(101deg, #BF1332 0%, #802424 100%) 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  font: normal normal bold 16px/20px Syne;
+  color: #F3F3F3;
+}
+.connectWallet__modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: 300px;
+  position: fixed;
+  background: #161522 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 0.9;
+  padding: 10px 20px;
+}
+.connectWallet__title {
+  font: normal normal medium 32px/40px Syne;
+  letter-spacing: 0px;
+  color: #F3F3F3;
+}
+.connectWallet__close__icon {
+  width: 24px !important;
+  height: 24px !important; 
+  color: white;
+  cursor: pointer;
+}
+.connectWallet__wallet {
+  background: #BFBFBF66 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  padding: 15px 20px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+.connectWallet__wallet__name {
+  text-align: left;
+  font: normal normal medium 24px/32px Syne;
+  letter-spacing: 0px;
+  color: #F3F3F3;
+}
+.connectWallet__wallet__icon {
+  width: 32px;
+  height: 32px;
+}
