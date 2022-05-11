@@ -20,15 +20,15 @@ export default makeStyles(theme => ({
 
     color: '#FFFFFF'
   },
-  toolbar: {
-    height: '160px',
-    backgroundColor: '#1C1C1C'
-  },
   buttonGroup: {
     position: 'absolute',
+    top: '60px',
     right: theme.spacing(8) 
   },
   dropdown: {
     minWidth: theme.spacing(26)
+  },
+  header: {
+    height: '150px'
   }
 }))
