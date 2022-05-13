@@ -1,2 +1,6 @@
-export const WALLET_OPTIONS = ['Metamask']
+export const WALLET_OPTIONS = ['Metamask',]
 export const NETWORK_OPTIONS = ['Polygon Mainnet', 'Mumbai','Ethereum Mainnet', 'Ropsten Test Network', 'Kovan Test Network', 'Rinkeby Test Network']
+export const PROTOCOLS = ['Quickswap', 'Curve', 'Uniswap', 'PancakeSwap']
+export const CONTRACTS = ['MATIC-DAI', 'MATIC-USDT',]
+export const METRICS = ['TokenPrice']
+export const CONDITIONS = ['+', '-']

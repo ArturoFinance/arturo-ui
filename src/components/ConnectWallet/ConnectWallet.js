@@ -35,7 +35,6 @@ const ConnectWallet = ({classes}) => {
 
     connector && activate(connector, undefined, true)
       .then((res) => {
-        console.log({res})
         setIsOpen(false)
       })
       .catch((error) => {
