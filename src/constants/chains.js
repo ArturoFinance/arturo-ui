@@ -1,5 +1,5 @@
 export const CHAINS = {
-  137: 'polygon',
-  80001: 'mumbai'
+  137: 'Polygon Mainnet',
+  80001: 'Mumbai Testnet'
 };
   

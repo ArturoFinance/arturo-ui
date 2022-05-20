@@ -14,7 +14,7 @@ export const NETWORK_URLS = {
   1: `https://mainnet.infura.io/v3/${INFURA_KEY}`
 };
 
-const SUPPORTED_CHAIN_IDS = [1, 137, 80001];
+const SUPPORTED_CHAIN_IDS = [1, 2, 4, 137, 80001];
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,

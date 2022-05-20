@@ -5,7 +5,7 @@ import './App.css';
 
 const Header = lazy(() => import('./components/Header'));
 const Home = lazy(() => import('./pages/Home/Home'));
-const Exchange = lazy(() => import('./pages/Exchange'));
+// const Exchange = lazy(() => import('./pages/Exchange'));
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           <Header />
           <Routes>
             <Route exact path='/' element={<Home />} />
-            <Route exact path='/exchange' element={<Exchange />} />
+            {/* <Route exact path='/exchange' element={<Exchange />} /> */}
           </Routes>
         </Suspense>
       </div>

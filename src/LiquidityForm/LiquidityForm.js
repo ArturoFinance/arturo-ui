@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { Grid, Card, CardActions, CardContent, Typography, TextField, Button } from "@mui/material"
-import { approveMatic, approveDai, addLiquidity } from '../utils/helpers'
+import { approveMatic, approveDai, addLiquidity } from '../../utils/helpers'
 
 const LiquidityForm = () => {
   const [maticValue, setMaticValue] = useState('')
@@ -45,7 +45,7 @@ const LiquidityForm = () => {
       <CardContent>
         <Grid container spacing={{ xs: 2, md: 3 }} rowSpacing={1}>
           <Grid item xs={7}>
-            <TextField id="matic" inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: "0" }} onChange={(e) => {setMaticValue(e.target.value); console.log(e.target.value);}} name="matic" type="number" placeholder="0.00" variant="outlined" />
+            <TextField id="matic" inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: "0" }} onChange={(e) => {setMaticValue(e.target.value);}} name="matic" type="number" placeholder="0.00" variant="outlined" />
           </Grid>
           <Grid item xs={5}>
             <Typography variant="h5" component="div">
@@ -53,7 +53,7 @@ const LiquidityForm = () => {
             </Typography>
           </Grid>
           <Grid item xs={7}>
-            <TextField id="dai" inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: "0" }} onChange={(e) => {setDaiValue(e.target.value); console.log(e.target.value);}} name="dai" type="number" placeholder="0.00" variant="outlined" />
+            <TextField id="dai" inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: "0" }} onChange={(e) => {setDaiValue(e.target.value);}} name="dai" type="number" placeholder="0.00" variant="outlined" />
           </Grid>
           <Grid item xs={5}>
             <Typography variant="h5" component="div">
