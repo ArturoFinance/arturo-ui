@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { Grid, Card, CardActions, CardContent, Typography, TextField, Button } from "@mui/material"
-import { approveMatic, approveDai, addLiquidity } from '../utils/helpers'
+import { approveMatic, approveDai, addLiquidity } from '../../utils/helpers'
 
 const LiquidityForm = () => {
   const [maticValue, setMaticValue] = useState('')

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { 
   Modal,
   Backdrop,
@@ -27,7 +27,9 @@ import SelectModal from '../SelectModal';
 
 import useStyles from './styles'
 import FormSelect from '../FormSelect';
+import LiquidityForm from '../LiquidityForm'
 import { createWorkflow } from '../../utils/helpers';
+import { approveMatic, approveDai } from '../../utils/helpers'
 
 
 const style = {
@@ -46,6 +48,9 @@ const style = {
 };
 
 const Workflow = () => {
+  const { ethereum } = window
+  const classes = useStyles()
+
   const [open, setOpen] = useState(false)
   const [openChild, setOpenChild] = useState(false)
   const [openProtocol, setOpenProtocol] = useState(false)
@@ -60,8 +65,44 @@ const Workflow = () => {
   const [metricVal, setMetricVal] = useState(null)
   const [conditionVal, setConditionVal] = useState(null)
 
-  const { ethereum } = window
-  const classes = useStyles()
+  const [maticValue, setMaticValue] = useState('')
+  const [daiValue, setDaiValue] = useState('')
+  const [maticApproved, setMaticApproved] = useState(false)
+  const [daiApproved, setDaiApproved] = useState(false)
+
+  const handleApproveMatic = useCallback(
+    async () => {
+      if (Number(maticValue) !== 0) {
+        const res = await approveMatic(Number(maticValue))
+        setMaticApproved(res)
+      } else {
+        alert("Zero value")
+      }
+    }, [maticValue]
+  )
+
+  const handleApproveDai = useCallback(
+    async () => {
+      if (Number(daiValue) !== 0) {
+        const res = await approveDai(Number(daiValue))
+        setDaiApproved(res)
+      } else {
+        alert("Zero value")
+      }
+    }, [daiValue]
+  )
+
+  const handleMaticChange = useCallback(
+    (e) => 
+      setMaticValue(e.target.value)
+      ,[]
+  )
+  
+  const handleDaiChange = useCallback(
+    (e) => 
+      setDaiValue(e.target.value)
+      ,[]
+  )
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -126,6 +167,7 @@ const Workflow = () => {
 
   const handleConditionChange = (e) => {
     setConditionVal(e.target.value)
+    console.log(e.target.value)
   }
 
   const handleClickSave = (e) => {
@@ -153,6 +195,7 @@ const Workflow = () => {
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
                   <Tab label="TRIGGER" value="1" />
                   <Tab label="CONDITIONS" value="2" />
+                  <Tab label="APPROVAL" value="3" />
                 </TabList>
               </Box>
               <TabPanel value="1">
@@ -242,7 +285,8 @@ const Workflow = () => {
                     </List>
                   }
                 />
-                <FormSelect 
+                <FormSelect
+                  key="metric"
                   options={METRICS}
                   onChange={handleMtricChange}
                   metricVal={metricVal}
@@ -250,6 +294,7 @@ const Workflow = () => {
                 />
 
                 <FormSelect 
+                  key="condition"
                   options={CONDITIONS}
                   onChange={handleConditionChange}
                   metricVal={conditionVal}
@@ -257,6 +302,21 @@ const Workflow = () => {
                 />
                 <FormInput
                   label='Value'
+                />
+                <Button className='classes.setupBtn' fullWidth variant='contained' onClick={handleClickNext}>
+                  Next
+                </Button>
+              </TabPanel>
+              <TabPanel value="3">
+                <LiquidityForm 
+                  maticValue={maticValue}
+                  daiValue={daiValue}
+                  maticApproved={maticApproved}
+                  daiApproved={daiApproved}
+                  onMaticChange={handleMaticChange}
+                  onDaiChange={handleDaiChange}
+                  onApproveMatic={handleApproveMatic}
+                  onApproveDai={handleApproveDai}
                 />
                 <Button variant='contained' fullWidth onClick={handleClickSave}>
                   Save

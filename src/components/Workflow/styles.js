@@ -8,5 +8,6 @@ export default makeStyles(theme => ({
     position: "absolute",
     bottom: '0px',
     bgColor: '#fff'
+    // marginTop: theme.spacing(2)
   }
 }))
